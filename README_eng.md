@@ -4,24 +4,44 @@ This project focuses on creating a model for segmenting people in images using t
 
 ## Contents
 
-1. [Dataset Structure](#dataset-structure)
-2. [Dependencies](#dependencies)
-3. [Setup and Installation](#setup-and-installation)
-4. [Model Overview](#model-overview)
-5. [Training Pipeline](#training-pipeline)
-6. [Visualization](#visualization)
-7. [Testing](#testing)
-8. [Telegram Bot for Background Removal](#telegram-bot-for-background-removal)
-9. [Features](#features)
-10. [Example Interaction with the Bot](#example-interaction-with-the-bot)
-11. [Installation](#installation)
-12. [Usage](#usage)
-13. [Code Overview](#code-overview)
-14. [Dependencies for the Telegram Bot](#dependencies-for-the-telegram-bot)
-15. [Bot Work Visualization](#bot-work-visualization)
-16. [License](#license)
+1. [Project Structure](#project-structure)
+2. [Dataset Structure](#dataset-structure)
+3. [Dependencies](#dependencies)
+4. [Setup and Installation](#setup-and-installation)
+5. [Model Overview](#model-overview)
+6. [Training Pipeline](#training-pipeline)
+7. [Visualization](#visualization)
+8. [Testing](#testing)
+9. [Telegram Bot for Background Removal](#telegram-bot-for-background-removal)
+10. [Features](#features)
+11. [Example Interaction with the Bot](#example-interaction-with-the-bot)
+12. [Installation](#installation)
+13. [Usage](#usage)
+14. [Code Overview](#code-overview)
+15. [Dependencies for the Telegram Bot](#dependencies-for-the-telegram-bot)
+16. [Bot Work Visualization](#bot-work-visualization)
+17. [License](#license)
 
 ---
+
+## Project Structure
+
+```
+/background_delete_bot
+|-- examples/
+|   |-- example.jpg #Bot Work Screenshot
+|   |-- test_result.png #Model Predictions on Test Dataset
+|   |-- visualization.png #Visualization Screenshot
+|
+|-- model_training/
+|   |-- background_delete_model.ipynb #Model training notebook
+|   |-- deeplabplus_mobile0nes4_epoch10_binary.pth #Saved model
+|   |-- requirements.txt
+|
+|-- telegram_bot/
+    |-- bot.py #Telegram bot script
+    |-- requirements.txt
+```
 
 ## Dataset Structure
 
