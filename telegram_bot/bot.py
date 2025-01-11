@@ -75,18 +75,25 @@ def process_image(image, background):
     # Transform the input image
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     tran_image = transform(image=image)
-    
+
     # Perform segmentation using the model
     mask = model(tran_image['image'].unsqueeze(0).to(device))
     outputs_masks = torch.argmax(mask, 1).squeeze().cpu().numpy()
-    
+
     # Resize the mask to match the original image
     resized_mask = cv2.resize(outputs_masks, (image.shape[1], image.shape[0]), interpolation=cv2.INTER_NEAREST)
 
+    # Morphological smoothing
+    kernel_size = max(5, int(0.1 * min(image.shape[:2])))
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel_size, kernel_size))
+    smoothed_mask = cv2.morphologyEx(resized_mask.astype(np.uint8), cv2.MORPH_CLOSE, kernel)
+
+    # Preserving the binary nature of the mask
+    _, binary_mask = cv2.threshold(smoothed_mask, 0.5, 1, cv2.THRESH_BINARY)
+
     # Replace the background
-    zero_mask = resized_mask == 0
     background_resized = resize_or_crop_background(background, image.shape)
-    result_image = np.where(zero_mask[..., None], background_resized, image).astype(np.uint8)
+    result_image = np.where(binary_mask[..., None], image, background_resized).astype(np.uint8)
 
     return result_image
 
