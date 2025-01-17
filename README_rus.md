@@ -154,13 +154,13 @@ pip install -r requirements.txt
 3. Наложения результатов сегментации на оригинальное изображение.
 4. Результат удаления фона.
 
-![Скриншот работы визуализации](examples\visualization.png)
+![Скриншот работы визуализации](examples/visualization.png)
 
 ---
 
 ## Тестирование
 
-![Предсказание модели на тестовом датасете](examples\test_result.png)
+![Предсказание модели на тестовом датасете](examples/test_result.png)
 
 - Test_loss:  0.0367
 - Test_IoU:  0.986
@@ -242,7 +242,7 @@ pip install -r requirements.txt
 
 ## Визуализация работы бота
 
-![Скриншот работы бота](examples\example.jpg)
+![Скриншот работы бота](examples/example.jpg)
 
 ---
 
